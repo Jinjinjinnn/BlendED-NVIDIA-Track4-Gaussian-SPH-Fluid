@@ -4,7 +4,7 @@
   <img src="resources/method_overview.png" alt="Method Overview">
 </p>
 
-This repository turns reconstructed 3D Gaussian splats directly into SPH fluid particles, simulates them using a Taichi‑based DFSPH solver, and renders the results with the same Gaussian representation. Colors are obtained from SH coefficients, and isotropic covariances are synthesized per frame for rasterization. In short: what you see is what you simulate.
+This repository turns reconstructed 3D Gaussian splats directly into SPH fluid particles, simulates them using a Taichi‑based DFSPH solver, and renders the results with the same Gaussian representation. Colors are obtained from SH coefficients, and isotropic covariances are synthesized per frame for rasterization.
 
 - **Unified representation**: reconstruction, simulation, and rendering all share 3D Gaussians
 - **DFSPH solver**: GPU‑accelerated density‑constraint SPH in Taichi
@@ -48,7 +48,7 @@ git submodule update --init --recursive
 
 ---
 
-## Setup (Docker)
+## Setup (with Docker)
 
 On Windows with an NVIDIA GPU, you can be up and running quickly. See `docs/DOCKER_GUIDE.md` for full details and troubleshooting.
 
@@ -74,12 +74,7 @@ cd /workspace
 
 ## Quick Start
 
-1) Download a sample GS model (inside the container)
-```bash
-bash scripts/download_sample_model.sh
-```
-
-2) Run simulation + render first frame + optionally make a video
+Run simulation + render first frame + optionally make a video
 ```bash
 python gs_simulation.py \
   --model_path ./model/ficus_whitebg-trained/ \
@@ -90,11 +85,6 @@ python gs_simulation.py \
 - Frames: `./output/<scene_name>/*.png`
 - Video: `./output/<scene_name>/output.mp4`
 - Initial exports: `init_surface_gaussians.ply`, `filled_particles_init.ply`
-
-More options:
-- `--output_path <dir>`: choose result directory root
-- `--output_h5`: also export HDF5
-- `--debug`: extra logs and intermediate dumps
 
 <img src="./demo/output_ficus.gif" width="300"/>
 
@@ -178,5 +168,6 @@ Each scene uses a single `.json` that specifies preprocessing, SPH simulation, c
 - T. Xie, Z. Zong, Y. Qiu, X. Li, Y. Feng, Y. Yang, and C. Jiang. PhysGaussian: Physics‑integrated 3D Gaussians for generative dynamics. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pages 4389–4398, 2024.
 
 - erizmr. SPH Taichi: A high‑performance implementation of SPH in Taichi. GitHub repository, 2025. Available at: https://github.com/erizmr/SPH_Taichi.
+
 
 
